@@ -1,10 +1,4 @@
-  <div align="center">
-  <br />
-    <a href="https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-StackMastery" target="_blank">
-      <img src="https://res.cloudinary.com/dogyg2j0h/image/upload/v1737733933/Group_3_qbhr3d.png" alt="Project Banner">
-    </a>
-  <br />
-<br/>
+<h1 align="center">Donor Flow</h1>
 
 <div>
     <img src="https://img.shields.io/badge/-Vite-black?style=for-the-badge&logoColor=white&logo=vite&color=ffd931" alt="vite" />
@@ -22,19 +16,17 @@
 </div>
 <br />
 <br />
-<a href="https://tofound.netlify.app" align="start">
-    <img width=200 src="https://res.cloudinary.com/dogyg2j0h/image/upload/v1737738092/Group_5_1_bpdezy.svg" alt="Donor. Flow">
-    
-</a>
+
     <br />
     <br />
+
    <div align="center">
 </div>
 </div>
 
 # 🚨 Introduction
 
-The **Red.bank** application aims to provide a user-friendly platform that streamlines blood donation activities. It connects blood donors with those in urgent need, promoting a seamless and efficient donation process. The application offers various features, including **donor registration**, **blood donation requests**, **donor management**, **content management**, and **role-based access control** to ensure an organized and secure experience for all users.
+The **Donor Flow** application aims to provide a user-friendly platform that streamlines blood donation activities. It connects blood donors with those in urgent need, promoting a seamless and efficient donation process. The application offers various features, including **donor registration**, **blood donation requests**, **donor management**, **content management**, and **role-based access control** to ensure an organized and secure experience for all users.
 
 Built using the **MERN stack** (MongoDB, Express.js, React, Node.js), Red.bank is designed to make blood donation simpler and more accessible for everyone involved.
 
@@ -86,78 +78,18 @@ Built using the **MERN stack** (MongoDB, Express.js, React, Node.js), Red.bank i
 23. [react-share](https://www.npmjs.com/package/react-share)
 24. [sweetalert2](https://www.npmjs.com/package/sweetalert2)
 
-## <a name="quick-start">🤸 Quick Start</a>
-
-Follow these steps to set up the project locally on your machine.
-
-**Prerequisites**
-
-Make sure you have the following installed on your machine:
-
-- [Git](https://git-scm.com/)
-- [Node.js](https://nodejs.org/en)
-- [npm](https://www.npmjs.com/) (Node Package Manager)
-
-**Cloning the Repository**
-
-```bash
-git clone https://github.com/Programming-Hero-Web-Course4/b10a12-client-side-StackMastery
-cd b10a12-client-side-StackMastery
-```
-
-**Installation**
-
-Install the project dependencies using npm:
-
-```bash
-npm install
-```
-
-**Configure**
-
-Rename the .env.example file to .env.local and fill all env
-
-```bash
-# Firebase
-VITE_FIREBASE_API_KEY=YOUR_FIREBASE_API_KEY
-VITE_FIREBASE_AUTH_DOMAIN=YOUR_FIREBASE_AUTH_DOMAIN
-VITE_FIREBASE_PROJECT_ID=YOUR_FIREBASE_PROJECT_ID
-VITE_FIREBASE_STORAGE_BUCKET=YOUR_FIREBASE_STORAGE_BUCKET
-VITE_FIREBASE_MESSAGING_SENDER_ID=YOUR_FIREBASE_MESSAGING_SENDER_ID
-VITE_FIREBASE_APP_ID=YOUR_FIREBASE_APP_ID
-VITE_FIREBASE_MEASUREMENT_ID=YOUR_FIREBASE_MEASUREMENT_ID
-
-# base Url
-VITE_BASE_URL=SERVER_URL
-
-# Cloudinary
-VITE_CLOUDINARY_PRESET=CLOUDINARY_UPLOAD_PRESET
-VITE_CLOUDINARY_CLOUD_NAME=CLOUDINARY_CLOUD_NAME
-
-#Recaptcha
-VITE_RECAPTCHA_SITE_KEY=YOUR_RECAPTCHA_SITE_KEY
-
-# Stripe
-VITE_STRIPE_PUBLISHABLE_KEY=YOUR_STRIPE_PUBLIC_KEY
-```
-
-**Running the Project**
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:5173](http://localhost:5173) in your browser to view the project.
-
 <h2>
     Full project deployed in <a href="netlify.com">Netlify</a>
 </h2>
-<a href="https://redbank.netlify.app">
+<a href="https://bucolic-kheer-35fd7c.netlify.app">
     <img style="margin-left: -20px" width="200" src="https://res.cloudinary.com/dhuydj1lg/image/upload/v1735126920/Group_4_tutd2b.svg">
 </a>
+
+Site Admin Info:
+
+- Email : admin@gmail.com
+- Password : Admin12345
 
 <hr />
 <br />
 <br />
-
-<img  src="https://res.cloudinary.com/dogyg2j0h/image/upload/v1737740595/screencapture-redbank-netlify-app-2025-01-24-09_09_54_1_1_biwlbh.png">
