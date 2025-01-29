@@ -1,7 +1,15 @@
-import React from "react";
+import { cn } from "@/lib/utils";
 
-const skeleton = () => {
-  return <div></div>;
-};
+function Skeleton({ className, ...props }) {
+  return (
+    <div
+      className={cn(
+        "animate-pulse rounded-md bg-neutral-200 dark:bg-neutral-800",
+        className
+      )}
+      {...props}
+    />
+  );
+}
 
-export default skeleton;
+export { Skeleton };
