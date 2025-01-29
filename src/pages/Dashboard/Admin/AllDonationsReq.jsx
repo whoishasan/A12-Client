@@ -1,0 +1,467 @@
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { Helmet } from "react-helmet-async";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import {
+  Table,
+  TableBody,
+  TableHead,
+  TableCell,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { AnimatePresence, motion } from "motion/react";
+import { useQuery } from "@tanstack/react-query";
+import { axiosSecure } from "@/hooks/axiosSecure";
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "@/context/AuthContext";
+import { SlArrowDown } from "react-icons/sl";
+import { Skeleton } from "@/components/ui/skeleton";
+import moment from "moment";
+import { Link } from "react-router-dom";
+import { CiEdit, CiTrash } from "react-icons/ci";
+import { PiEyeThin } from "react-icons/pi";
+import Label from "@/components/Label";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import html2pdf from "html2pdf.js";
+import Swal from "sweetalert2";
+import toast from "react-hot-toast";
+import { ImSpinner11 } from "react-icons/im";
+import Input from "@/components/ui/Input";
+
+const AllDonationsReq = () => {
+  const { authData } = useContext(AuthContext);
+  const [currentPage, setcurrentPage] = useState(1);
+  const [filterBarIsOpen, setfilterBarIsOpen] = useState();
+  const [filter, setfilter] = useState("all");
+  const [isDeleting, setisDeleting] = useState();
+  const [totalPage, settotalPage] = useState();
+
+  const fetchData = async () => {
+    const { data } = await axiosSecure.get(`/dashboard/donations/all`, {
+      params: {
+        uid: authData?.uid,
+        page: currentPage,
+        limit: 10,
+      },
+    });
+    settotalPage(data?.totalPages);
+
+    return data;
+  };
+
+  const {
+    isLoading,
+    refetch,
+    data: allDonations,
+  } = useQuery({
+    queryKey: ["allDonations", currentPage],
+    queryFn: fetchData,
+  });
+
+  useEffect(() => {
+    fetchData();
+  }, [filter, currentPage]);
+
+  const ExportToPDF = async () => {
+    if (allDonations?.donations?.length < 1) {
+      toast.error("No donation record to export");
+      return;
+    }
+
+    const tableCanvas = document.getElementById("tableDonation");
+
+    const customWidth = 15;
+
+    const options = {
+      margin: 0.5,
+      filename: "donations.pdf",
+      image: { type: "jpeg", quality: 1 },
+      html2canvas: {
+        scale: 5,
+        useCORS: true,
+        logging: true,
+        removeContainer: true,
+      },
+      jsPDF: {
+        unit: "in",
+        format: [customWidth, 8.5],
+        orientation: "landscape",
+      },
+    };
+
+    html2pdf().set(options).from(tableCanvas).save();
+  };
+
+  const SetStatus = async (status, data) => {
+    if (status) {
+      Swal.fire({
+        title: "Donor donated?",
+        text: "If donor is donate blood by your request accept this",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonText: "Done",
+      }).then((res) => {
+        if (!res?.isConfirmed) {
+          return;
+        }
+        axiosSecure
+          .patch(`/donation/update?uid=${authData?.uid}&id=${data?._id}`, {
+            status: "done",
+          })
+          .then(() => {
+            refetch();
+            toast.success("Congratulation");
+          });
+      });
+      return;
+    }
+    Swal.fire({
+      title: "Donor not donated?",
+      text: "If donor is not donated blood by your request accept this",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Done",
+    }).then((res) => {
+      if (!res?.isConfirmed) {
+        return;
+      }
+      axiosSecure
+        .patch(`/donation/update?uid=${authData?.uid}&id=${data?._id}`, {
+          status: "canceled",
+        })
+        .then(() => {
+          refetch();
+          toast.success("Congratulation");
+        });
+    });
+  };
+
+  const handelDonationDelete = (data) => {
+    if (!data) {
+      toast.error("Something went wrong");
+      return;
+    }
+    if (authData?.role === "volunteer") {
+      return;
+    }
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Do you want to delete this?",
+      icon: "question",
+      confirmButtonText: "Delete",
+      showCancelButton: true,
+      cancelButtonText: "No!",
+    }).then((res) => {
+      if (!res?.isConfirmed) {
+        return;
+      }
+      setisDeleting(true);
+      axiosSecure
+        .delete(`/donation/delete?uid=${authData?.uid}&id=${data?._id}`)
+        .then((res) => {
+          toast.success("Donation deleted succesfull");
+        })
+        .finally(() => {
+          setisDeleting(false);
+          refetch();
+        });
+    });
+  };
+
+  return (
+    <>
+      <Helmet>
+        <title>All users | Donor. Flow</title>
+      </Helmet>
+      <Breadcrumb>
+        <BreadcrumbList>
+          <BreadcrumbItem>Dashboard</BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage>All blood donation requests</BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
+      <motion.div
+        initial={{ translateY: 200, opacity: 0 }}
+        animate={{ translateY: 0, opacity: 1 }}
+        className="bg-white p-5 rounded-xl"
+      >
+        <div className="flex justify-between border-b items-end flex-wrap md:flex-nowrap">
+          <div>
+            <button
+              onClick={() => setfilterBarIsOpen(!filterBarIsOpen)}
+              className="rounded-b-none flex items-center gap-3 border-b-0 rounded-t-lg border px-5 py-2"
+            >
+              {`Filtered By ${filter} Status`}
+              <SlArrowDown
+                size={15}
+                className={`${filterBarIsOpen && "rotate-180"}`}
+              />
+            </button>
+            <AnimatePresence>
+              {filterBarIsOpen && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  className="flex gap-2 flex-wrap border border-b-0 p-2 font-semibold rounded-r-lg overflow-hidden"
+                >
+                  <button
+                    onClick={() => setfilter("all")}
+                    className="px-5 py-2 bg-green-400 hover:bg-green-500 rounded-lg"
+                  >
+                    All
+                  </button>
+                  <button
+                    onClick={() => setfilter("pending")}
+                    className="px-5 py-2 bg-yellow-400 hover:bg-yellow-500 rounded-lg"
+                  >
+                    Pending
+                  </button>
+                  <button
+                    onClick={() => setfilter("inprogress")}
+                    className="px-5 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg"
+                  >
+                    InProgress
+                  </button>
+                  <button
+                    onClick={() => setfilter("done")}
+                    className="px-5 py-2 bg-sky-500 hover:bg-sky-700 text-white rounded-lg"
+                  >
+                    Done
+                  </button>
+                  <button
+                    onClick={() => setfilter("canceled")}
+                    className="px-5 py-2 bg-red-500 text-white hover:bg-red-700 rounded-lg"
+                  >
+                    Canceled
+                  </button>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+          <button
+            onClick={() => ExportToPDF()}
+            className="rounded-b-none w-full md:w-fit bg-red-500 text-white hover:bg-red-700 h-fit flex items-center gap-3 border-b-0 rounded-t-lg border px-5 py-2"
+          >
+            Export as PDF
+          </button>
+        </div>
+        <ScrollArea className="w-full pb-3">
+          <Table id="tableDonation" className="min-w-[1440px] xl:min-w-full">
+            <TableHeader className="font-semibold bg-red-100">
+              <TableRow>
+                <TableHead className="w-[150px]">Recipient name</TableHead>
+                <TableHead>Location</TableHead>
+                <TableHead>Donation date</TableHead>
+                <TableHead>Donation time</TableHead>
+                <TableHead>Blood group</TableHead>
+                <TableHead>Donor info</TableHead>
+                {authData?.role !== "volunteer" && (
+                  <>
+                    <TableHead data-html2canvas-ignore className="w-[10px]">
+                      Edit
+                    </TableHead>
+                    <TableHead data-html2canvas-ignore className="w-[10px]">
+                      Delete
+                    </TableHead>
+                  </>
+                )}
+                <TableHead data-html2canvas-ignore className="w-[10px]">
+                  View
+                </TableHead>
+                <TableHead className="text-right w-[200px]">Status</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {allDonations &&
+                !isLoading &&
+                allDonations?.donations
+                  ?.filter((don) => {
+                    if (filter === "all") return true;
+                    return don?.status === filter;
+                  })
+                  .map((don, index) => (
+                    <React.Fragment key={index}>
+                      <TableRow>
+                        <TableCell>{don?.recName}</TableCell>
+                        <TableCell>{don?.fullAddress}</TableCell>
+                        <TableCell>
+                          {moment(don?.donationDate).format("YYYY MMMM D")}
+                        </TableCell>
+                        <TableCell>{don?.donationTime}</TableCell>
+                        <TableCell>{don?.bloodGroupe}</TableCell>
+                        <TableCell>
+                          {don?.status === "pending" ? (
+                            "Not responded anyone"
+                          ) : (
+                            <>
+                              <span className="font-bold">
+                                {don?.donorName}
+                                <br />
+                              </span>
+                              {don?.donorEmail}
+                            </>
+                          )}
+                        </TableCell>
+                        {authData?.role !== "volunteer" && (
+                          <>
+                            <TableCell data-html2canvas-ignore>
+                              <Link to={`../donation/edit/${don?._id}`}>
+                                <button className="bg-green-400 p-2 rounded-lg hover:bg-green-600 transition-all hover:text-white">
+                                  <CiEdit size={20} />
+                                </button>
+                              </Link>
+                            </TableCell>
+                            <TableCell data-html2canvas-ignore>
+                              <button
+                                onClick={() => handelDonationDelete(don)}
+                                className="bg-red-400 p-2 rounded-lg hover:bg-red-600 transition-all text-white"
+                              >
+                                {isDeleting ? (
+                                  <ImSpinner11
+                                    size={20}
+                                    className="animate-spin"
+                                  />
+                                ) : (
+                                  <CiTrash size={20} />
+                                )}
+                              </button>
+                            </TableCell>
+                          </>
+                        )}
+                        <TableCell data-html2canvas-ignore>
+                          <Link to={`../../donation/${don?._id}`}>
+                            <button className="bg-sky-400 p-2 rounded-lg hover:bg-sky-600 transition-all text-white">
+                              <PiEyeThin size={20} />
+                            </button>
+                          </Link>
+                        </TableCell>
+                        <TableCell className="text-right flex justify-end">
+                          {don?.status === "pending" ? (
+                            <Label>Pending</Label>
+                          ) : don?.status === "inprogress" ? (
+                            <Popover>
+                              <PopoverTrigger>
+                                <span className="bg-yellow-400 pl-3 gap-2 items-center cursor-pointer rounded-full flex overflow-hidden">
+                                  <span className="py-1">InProgress</span>
+                                  <SlArrowDown
+                                    size={25}
+                                    className="bg-yellow-600 py-2"
+                                  />
+                                </span>
+                              </PopoverTrigger>
+                              <PopoverContent className="!shadow-none text-sm flex flex-col items-start text-start mr-6 mt-2 border-red-200 w-[130px]">
+                                <button onClick={() => SetStatus(true, don)}>
+                                  Done
+                                </button>
+                                <span className="w-full h-[1px] bg-red-200 my-2"></span>
+                                <button onClick={() => SetStatus(false, don)}>
+                                  Cancel
+                                </button>
+                              </PopoverContent>
+                            </Popover>
+                          ) : don?.status === "done" ? (
+                            <Label className={`bg-sky-600`}>Done</Label>
+                          ) : (
+                            <Label className={`!bg-red-500`}>Canceled</Label>
+                          )}
+                        </TableCell>
+                      </TableRow>
+                    </React.Fragment>
+                  ))}
+
+              {allDonations?.donations?.length > 0 &&
+                !isLoading &&
+                allDonations?.donations?.filter((don) => {
+                  if (filter === "all") return true;
+                  return don?.status === filter;
+                }).length === 0 && (
+                  <TableRow>
+                    <TableCell colSpan={9} className="text-start py-5">
+                      No donations found for the selected filter.
+                    </TableCell>
+                  </TableRow>
+                )}
+
+              {isLoading &&
+                [...Array(6)].map((_, index) => (
+                  <TableRow key={index}>
+                    <TableCell>
+                      <Skeleton className="w-full h-10" />
+                    </TableCell>
+                    <TableCell>
+                      <Skeleton className="w-full h-10" />
+                    </TableCell>
+                    <TableCell>
+                      <Skeleton className="w-full h-10" />
+                    </TableCell>
+                    <TableCell>
+                      <Skeleton className="w-full h-10" />
+                    </TableCell>
+                    <TableCell>
+                      <Skeleton className="w-full h-10" />
+                    </TableCell>
+                    <TableCell>
+                      <Skeleton className="w-full h-10" />
+                    </TableCell>
+                    <TableCell>
+                      <Skeleton className="w-full h-10" />
+                    </TableCell>
+                    <TableCell>
+                      <Skeleton className="w-full h-10" />
+                    </TableCell>
+                    <TableCell>
+                      <Skeleton className="w-full h-10" />
+                    </TableCell>
+                  </TableRow>
+                ))}
+            </TableBody>
+          </Table>
+          {allDonations?.donations?.length <= 0 && (
+            <div className="py-5 px-5">
+              No blood donation request record found
+            </div>
+          )}
+          <div className="w-full flex items-center gap-3 px-2 flex-wrap pt-2">
+            {isLoading &&
+              [...Array(6)].map((_, index) => (
+                <Skeleton key={index} className="rounded-md p-4" />
+              ))}
+            {!isLoading &&
+              [...Array(totalPage)].map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setcurrentPage(index + 1)}
+                  className={`p-2 border rounded-md px-4 ${
+                    currentPage === index + 1 && "bg-red-50 text-red-500"
+                  }`}
+                >
+                  {index + 1}
+                </button>
+              ))}
+            <div className="flex items-center">
+              <h3>
+                Showing result {allDonations?.donations?.length || 0} of 10
+              </h3>
+            </div>
+          </div>
+          <ScrollBar orientation="horizontal" />
+        </ScrollArea>
+      </motion.div>
+    </>
+  );
+};
+
+export default AllDonationsReq;

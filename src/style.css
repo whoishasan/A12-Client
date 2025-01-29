@@ -1,0 +1,201 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  outline: none;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+    --color-1: 0 100% 63%;
+    --color-2: 270 100% 63%;
+    --color-3: 210 100% 63%;
+    --color-4: 195 100% 63%;
+    --color-5: 90 100% 63%;
+  }
+  .dark {
+    --color-1: 0 100% 63%;
+    --color-2: 270 100% 63%;
+    --color-3: 210 100% 63%;
+    --color-4: 195 100% 63%;
+    --color-5: 90 100% 63%;
+  }
+}
+
+/* From Uiverse.io by alexruix */ 
+.loader {
+  width: 48px;
+  height: 48px;
+  margin: auto;
+  position: relative;
+}
+
+.loader:before {
+  content: '';
+  width: 48px;
+  height: 5px;
+  background: #f0808050;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  border-radius: 50%;
+  animation: shadow324 0.5s linear infinite;
+}
+
+.loader:after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: #f08080;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 4px;
+  animation: jump7456 0.5s linear infinite;
+}
+
+@keyframes jump7456 {
+  15% {
+    border-bottom-right-radius: 3px;
+  }
+
+  25% {
+    transform: translateY(9px) rotate(22.5deg);
+  }
+
+  50% {
+    transform: translateY(18px) scale(1, .9) rotate(45deg);
+    border-bottom-right-radius: 40px;
+  }
+
+  75% {
+    transform: translateY(9px) rotate(67.5deg);
+  }
+
+  100% {
+    transform: translateY(0) rotate(90deg);
+  }
+}
+
+@keyframes shadow324 {
+
+  0%,
+    100% {
+    transform: scale(1, 1);
+  }
+
+  50% {
+    transform: scale(1.2, 1);
+  }
+}
+
+@keyframes dash_682 {
+  72.5% {
+    opacity: 0;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+::selection {
+  background-color: #ff4d4f;
+  color: white;
+}
+
+.swal2-popup {
+  border-radius: 21px !important;
+  border: 4px solid #ff00008a !important;
+}
+
+.swal2-confirm {
+  background: rgba(255, 0, 0, 0.632) !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+
+@layer base {
+  img {
+    display: initial;
+  }
+}
+
+a.jodit-status-bar-link {
+  display: none !important;
+}
+
+html {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.blogDetails {
+  p,
+  ul,
+  ol {
+    font-size: 14px !important;
+  }
+  ol,
+  ul {
+    list-style: disc;
+  }
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+.jodit-wysiwyg {
+  font-family: "Source Serif 4", serif !important;
+}
+.jodit {
+  font-family: "Source Serif 4", serif !important;
+}
+body {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizelegibility;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+header,
+#main_container {
+  flex: 1 0 auto;
+}
+.jodit-wysiwyg {
+  padding: 20px !important;
+}
+
+footer {
+  .loading svg polyline#back {
+    fill: none;
+    stroke: #ffffff33;
+  }
+  .loading svg polyline#front {
+    stroke: #ffffff;
+  }
+}
+
+.css-1bcxhkm-menu {
+  z-index: 999999999999999999999999 !important;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+.grecaptcha-badge {
+  box-shadow: none !important;
+}
