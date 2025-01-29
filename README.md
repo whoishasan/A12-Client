@@ -17,13 +17,6 @@
 <br />
 <br />
 
-    <br />
-    <br />
-
-   <div align="center">
-</div>
-</div>
-
 # 🚨 Introduction
 
 The **Donor Flow** application aims to provide a user-friendly platform that streamlines blood donation activities. It connects blood donors with those in urgent need, promoting a seamless and efficient donation process. The application offers various features, including **donor registration**, **blood donation requests**, **donor management**, **content management**, and **role-based access control** to ensure an organized and secure experience for all users.
@@ -79,7 +72,7 @@ Built using the **MERN stack** (MongoDB, Express.js, React, Node.js), Red.bank i
 24. [sweetalert2](https://www.npmjs.com/package/sweetalert2)
 
 <h2>
-    Full project deployed in <a href="netlify.com">Netlify</a>
+    Full Project Deployed in Netlify
 </h2>
 <a href="https://bucolic-kheer-35fd7c.netlify.app">
     <img style="margin-left: -20px" width="200" src="https://res.cloudinary.com/dhuydj1lg/image/upload/v1735126920/Group_4_tutd2b.svg">
@@ -87,7 +80,7 @@ Built using the **MERN stack** (MongoDB, Express.js, React, Node.js), Red.bank i
 
 Site Admin Info:
 
-- Email : admin@gmail.com
+- Username : admin@gmail.com
 - Password : Admin12345
 
 <hr />
