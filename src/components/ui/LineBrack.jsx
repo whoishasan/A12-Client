@@ -1,7 +1,9 @@
-import React from "react";
-
 const LineBrack = () => {
-  return <div></div>;
+  return (
+    <>
+      <br className="hidden md:block" />
+    </>
+  );
 };
 
 export default LineBrack;
