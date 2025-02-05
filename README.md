@@ -17,7 +17,7 @@
 <br />
 <br />
 
-# 🚨 Introduction
+# 🚨 Project Overview
 
 The **Donor Flow** application aims to provide a user-friendly platform that streamlines blood donation activities. It connects blood donors with those in urgent need, promoting a seamless and efficient donation process. The application offers various features, including **donor registration**, **blood donation requests**, **donor management**, **content management**, and **role-based access control** to ensure an organized and secure experience for all users.
 
@@ -43,6 +43,34 @@ Built using the **MERN stack** (MongoDB, Express.js, React, Node.js), Red.bank i
 16. Google recaptcha in funding page
 17. ZSecure Stripe payment
 18. React form managment (React hook form)
+
+## Technologies used
+
+### Frontend:
+
+- HTML, CSS, and Tailwind CSS for responsive and visually appealing design.
+- JavaScript for interactive and dynamic user interfaces.
+- React.js for building a scalable and component-based UI.
+
+### Backend:
+
+- Node.js with Express.js for handling server-side logic and APIs.
+
+### Database:
+
+- MongoDB for efficient and flexible data storage of user and campaign information.
+
+### Authentication & Security:
+
+- JWT (JSON Web Token) or OAuth for secure user authentication.
+
+### Version Control:
+
+- Git and GitHub for collaborative development and version tracking.
+
+### Deployment:
+
+- Vercel for Backend or Netlify for frontend deployment.
 
 ## 📦 Project Dependencies
 
