@@ -99,6 +99,49 @@ Built using the **MERN stack** (MongoDB, Express.js, React, Node.js), Red.bank i
 23. [react-share](https://www.npmjs.com/package/react-share)
 24. [sweetalert2](https://www.npmjs.com/package/sweetalert2)
 
+## How to run the project locally:
+
+### Prerequisites
+
+Make sure you have the following installed on your system:
+
+- [Node.js](https://nodejs.org/) (LTS version recommended)
+- [Git](https://git-scm.com/)
+- [MongoDB](https://www.mongodb.com/) (for local database setup)
+
+**Clone the Repository**
+
+```bash
+git clone https://github.com/whoishasan/A12-Client
+cd A12-Client
+```
+
+**Installation**
+
+Run the following command to install all required packages:
+
+```bash
+npm install
+```
+
+**Configure**
+
+Create a .env file in the root directory and add the necessary environment variables. For example:
+
+```bash
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+FIREBASE_CONFIGURATION_KEY=your_configuration_key
+```
+
+**Use the command below to start the application locally:**
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser to view the project.
+
 <h2>
     Full Project Deployed in Netlify
 </h2>
