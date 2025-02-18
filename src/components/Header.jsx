@@ -17,7 +17,7 @@ const Header = () => {
   return (
     <>
       <header className="flex justify-center p-5 py-10 fixed w-full z-[99999999]">
-        <div className="w-[1200px] inline-flex justify-between items-center border bg-white p-5 py-3 rounded-2xl">
+        <div className="w-[1240px] inline-flex justify-between items-center border bg-white p-5 py-3 rounded-xl">
           <Logo width="50px" />
           <nav
             className={`${
