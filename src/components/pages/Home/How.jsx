@@ -17,7 +17,7 @@ const How = () => {
       </TitleAndDes>
 
       <section className="flex justify-center">
-        <div className="w-primary grid px-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-5 justify-between gap-5 pb-20 pt-10">
+        <div className="w-primary grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 xl:grid-cols-5 justify-between gap-5 pb-20 pt-10">
           {StackCardData &&
             StackCardData.map((card, index) => (
               <div
