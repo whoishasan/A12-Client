@@ -44,7 +44,7 @@ const ContactUs = () => {
                     to={`tell:(123) 456-7890`}
                     className="text-red-500 font-semibold pt-2 flex hover:underline"
                   >
-                    +880 1XXXXXXXXX
+                    +880 1306-188935
                   </Link>
                 </div>
               </div>
@@ -78,7 +78,7 @@ const ContactUs = () => {
                 className="p-10 space-y-5 border w-full rounded-xl bg-white"
               >
                 <div className="flex flex-wrap sm:flex-nowrap justify-between w-full gap-5">
-                  <Input label="Name" placeholder="Mehedi Hasan" />
+                  <Input label="Name" placeholder="Your name" />
                   <Input
                     type="email"
                     label="Email"
@@ -91,7 +91,7 @@ const ContactUs = () => {
                     label="Phone"
                     placeholder="+880 1XXXXXXXXX"
                   />
-                  <Input label="Company" placeholder="Programming Hero" />
+                  <Input label="Company" placeholder="Company name" />
                 </div>
                 <div className="flex flex-wrap sm:flex-nowrap justify-between w-full gap-5">
                   <textarea
