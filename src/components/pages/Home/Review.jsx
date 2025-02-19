@@ -8,9 +8,11 @@ const Review = () => {
         <div className="w-primary px-5 py-10 relative flex h-[500px] flex-col items-center justify-center overflow-hidden">
           <div
             data-aos="fade-down"
-            className="flex w-full justify-end text-end items-end flex-col z-[999]"
+            className="flex w-full justify-center text-end items-end flex-col z-[999]"
           >
-            <h3 className="text-4xl font-semibold">Our Donors Reviews</h3>
+            <h3 className="text-4xl text-left font-semibold">
+              Our Donors Reviews
+            </h3>
             <span className="w-20 h-1 border-b-4 border-dashed border-red-500 flex my-5"></span>
             <p className="pb-10">
               Our donors value the simplicity and effectiveness of our platform.

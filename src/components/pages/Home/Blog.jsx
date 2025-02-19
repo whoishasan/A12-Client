@@ -73,9 +73,17 @@ const Blog = () => {
                 {post?.shortDescription?.length > 0 && (
                   <p>{post?.shortDescription?.slice(0, 120)}</p>
                 )}
-                <p className="px-2 py-1 bg-white/50 border w-fit rounded-md">
-                  {moment(post?.createdAt).fromNow()}
-                </p>
+                <div className="flex justify-between">
+                  <p className="px-2 py-1 bg-white/50 border border-red-200 w-fit rounded-md">
+                    {moment(post?.createdAt).fromNow()}
+                  </p>
+                  <Link
+                    to={"/blogs"}
+                    className="flex cursor-pointer justify-center items-center px-2 py-1 bg-white/50 border border-red-200 w-fit rounded-md"
+                  >
+                    See More...
+                  </Link>
+                </div>
               </motion.article>
             ))}
           {isLoading &&

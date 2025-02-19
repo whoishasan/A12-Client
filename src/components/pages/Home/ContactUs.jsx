@@ -36,15 +36,15 @@ const ContactUs = () => {
                   className="bg-primary-1 p-2 rounded-xl text-red-500"
                 />
                 <div>
-                  <h2 className="text-xl font-semibold">Talk with us</h2>
+                  <h2 className="text-xl font-semibold">Let's Talk</h2>
                   <p>
-                    Our lines are open from 9 AM to 5 PM, Monday through Friday.
+                    Our lines are open from 8 AM to 4 PM, Sunday through Friday.
                   </p>
                   <Link
                     to={`tell:(123) 456-7890`}
                     className="text-red-500 font-semibold pt-2 flex hover:underline"
                   >
-                    (123) 456-7890
+                    +880 1XXXXXXXXX
                   </Link>
                 </div>
               </div>
@@ -78,7 +78,7 @@ const ContactUs = () => {
                 className="p-10 space-y-5 border w-full rounded-xl bg-white"
               >
                 <div className="flex flex-wrap sm:flex-nowrap justify-between w-full gap-5">
-                  <Input label="Name" placeholder="Junaid Islam" />
+                  <Input label="Name" placeholder="Mehedi Hasan" />
                   <Input
                     type="email"
                     label="Email"
@@ -89,7 +89,7 @@ const ContactUs = () => {
                   <Input
                     type="text"
                     label="Phone"
-                    placeholder="(487) 870 - 0710"
+                    placeholder="+880 1XXXXXXXXX"
                   />
                   <Input label="Company" placeholder="Programming Hero" />
                 </div>
@@ -97,7 +97,7 @@ const ContactUs = () => {
                   <textarea
                     rows={4}
                     className="border w-full p-5 rounded-xl max-h-[150px]"
-                    placeholder="Leave us a message"
+                    placeholder="Write us a message"
                   />
                 </div>
                 <button className="px-5 py-3 bg-red-500 rounded-xl text-white font-semibold">
