@@ -173,7 +173,7 @@ const DonationReq = () => {
                   {moment(donation?.donationTime, "HH:mm").format("hh:mm A")}
                 </li>
                 <Link to={`/donation/${donation?._id}`} className="flex">
-                  <button className="w-full border border-dashed text-gray-900 border-gray-900/50 rounded-lg font-semibold text-sm py-[5px]">
+                  <button className="w-full hover:bg-red-200 border border-dashed text-gray-900 border-gray-900/50 rounded-lg font-semibold text-sm py-[5px]">
                     View Details
                   </button>
                 </Link>
