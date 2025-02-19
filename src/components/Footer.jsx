@@ -89,9 +89,7 @@ const Footer = () => {
             <div className="flex flex-col w-full gap-5">
               <h3 className="font-semibold text-xl">Contact</h3>
               <address className="space-y-3 flex flex-col">
-                Level-4, 34, Awal Centre, Banani, Dhaka web@programming-hero.com
-                01322901105, 01322810867 (Available: Sat - Thu, 10:00 AM to 7:00
-                PM)
+                Naogaon,Rajshahi,Bangladesh 01306188935 (Always Available)
               </address>
             </div>
           </div>
@@ -111,22 +109,22 @@ export default Footer;
 
 export const FollowUs = [
   {
-    path: "https://github.com/Stackmastery",
+    path: "https://github.com/whoishasan",
     name: "GitHub",
     icon: <FaGithub />,
   },
   {
-    path: "https://www.facebook.com/programmingherowebcourse",
+    path: "https://www.facebook.com/X10.Alvee",
     name: "Facebook",
     icon: <FaFacebookF />,
   },
   {
-    path: "https://www.youtube.com/c/ProgrammingHeroCommunity",
+    path: "https://www.youtube.com",
     name: "YouTube",
     icon: <FaYoutube />,
   },
   {
-    path: "https://www.linkedin.com/company/programminghero/",
+    path: "https://www.linkedin.com/in/web-developer-mehedihasan",
     name: "Linkedin",
     icon: <FaLinkedinIn />,
   },
