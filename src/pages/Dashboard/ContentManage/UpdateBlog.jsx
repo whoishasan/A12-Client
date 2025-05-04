@@ -128,7 +128,7 @@ const AddBlog = () => {
       readonly: false,
       height: 600,
       buttons: toolbarOptions,
-      placeholder: "Type here...",
+      placeholder: "",
     }),
     []
   );
@@ -271,7 +271,7 @@ const AddBlog = () => {
                 await handelTitleInput(e);
                 HandelGenaretPermalLink(e);
               }}
-              placeholder="Post Title"
+              placeholder=""
             />
             {errors.postTitle && <LineError error={errors.postTitle.message} />}
           </div>
@@ -307,7 +307,7 @@ const AddBlog = () => {
               rows={4}
               {...formFields("postDes")}
               onInput={handleDescriptionInput}
-              placeholder="Short description"
+              placeholder=""
               className="p-2 text-sm border focus:border-red-400/50 focus:ring-4 transition-all ring-red-100 w-full rounded-md"
             ></textarea>
             {errors.postDes && <LineError error={errors.postDes.message} />}

@@ -148,7 +148,7 @@ const CreateDonationReq = () => {
               })}
               disabled={isCreating}
               label="Recipient name"
-              placeholder="Enter recipient name"
+              placeholder=""
             />
             <Input
               {...formField("recEmail", {
@@ -160,7 +160,7 @@ const CreateDonationReq = () => {
               })}
               type="email"
               disabled={isCreating}
-              placeholder="Enter recipient email  "
+              placeholder=""
               label="Recipient email"
             />
           </div>
@@ -171,14 +171,14 @@ const CreateDonationReq = () => {
                 required: "Please give a Requester",
               })}
               label="Hospital"
-              placeholder="Ex - Dhaka Medical College Hospital"
+              placeholder=""
             />
             <Input
               disabled={isCreating}
               {...formField("fullAddress", {
                 required: "Please give a Requester",
               })}
-              placeholder="Ex - Zahir Raihan Rd, Dhaka"
+              placeholder=""
               label="Full address"
             />
           </div>
@@ -197,7 +197,7 @@ const CreateDonationReq = () => {
                 required: "Please give a fulladdress",
               })}
               type="time"
-              placeholder="Ex - Zahir Raihan Rd, Dhaka"
+              placeholder=""
               label="Donation time"
             />
             <div className="w-full">
@@ -227,7 +227,7 @@ const CreateDonationReq = () => {
               })}
               className="border w-full px-5 py-2 rounded-lg ring-offset-1 focus:ring-1 ring-red-700/60 transition-all focus:border-transparent text-sm placeholder:text-color-1/80 placeholder:font-medium"
               type="text"
-              placeholder="Type message"
+              placeholder=""
               label="Request message"
             />
           </div>

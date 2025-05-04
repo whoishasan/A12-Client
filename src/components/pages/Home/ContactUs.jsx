@@ -78,26 +78,18 @@ const ContactUs = () => {
                 className="p-10 space-y-5 border w-full rounded-xl bg-white"
               >
                 <div className="flex flex-wrap sm:flex-nowrap justify-between w-full gap-5">
-                  <Input label="Name" placeholder="Your name" />
-                  <Input
-                    type="email"
-                    label="Email"
-                    placeholder="example@gmail.com"
-                  />
+                  <Input label="Name" placeholder="" />
+                  <Input type="email" label="Email" placeholder="" />
                 </div>
                 <div className="flex flex-wrap sm:flex-nowrap justify-between w-full gap-5">
-                  <Input
-                    type="text"
-                    label="Phone"
-                    placeholder="+880 1XXXXXXXXX"
-                  />
-                  <Input label="Company" placeholder="Company name" />
+                  <Input type="text" label="Phone" placeholder="" />
+                  <Input label="Company" placeholder="" />
                 </div>
                 <div className="flex flex-wrap sm:flex-nowrap justify-between w-full gap-5">
                   <textarea
                     rows={4}
                     className="border w-full p-5 rounded-xl max-h-[150px]"
-                    placeholder="Write us a message"
+                    placeholder=""
                   />
                 </div>
                 <button className="px-5 py-3 bg-red-500 rounded-xl text-white font-semibold">

@@ -63,7 +63,7 @@ const Login = () => {
               },
             })}
             label="Email Address"
-            placeholder="Enter your email address"
+            placeholder=""
           ></Input>
           {errors.email && <LineError error={errors.email.message} />}
           <Input
@@ -77,7 +77,7 @@ const Login = () => {
             })}
             label="Password"
             type="password"
-            placeholder="Enter your account password"
+            placeholder=""
           ></Input>
           {errors.password && <LineError error={errors.password?.message} />}
           <div className="flex justify-between items-center pt-2">

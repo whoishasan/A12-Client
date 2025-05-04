@@ -161,7 +161,7 @@ const Register = () => {
               {...registerField("name", {
                 required: "Full name is required",
               })}
-              placeholder="Enter your full name"
+              placeholder=""
               errorMessage={errors.name?.message}
             >
               {errors.name && <LineError error={errors.name?.message} />}
@@ -175,7 +175,7 @@ const Register = () => {
                   message: "Invalid email address",
                 },
               })}
-              placeholder="Email Address"
+              placeholder=""
               errorMessage={errors.email?.message}
             >
               {errors.email && <LineError error={errors.email?.message} />}
@@ -201,7 +201,7 @@ const Register = () => {
                 },
               })}
               type="password"
-              placeholder="Enter a strong password"
+              placeholder=""
               errorMessage={errors.password?.message}
             >
               {errors.password && (
@@ -217,7 +217,7 @@ const Register = () => {
                 validate: (value) =>
                   value === password || "Passwords do not match",
               })}
-              placeholder="Confirm your password"
+              placeholder=""
               errorMessage={errors.confirmpassword?.message}
             >
               {errors.confirmpassword && (

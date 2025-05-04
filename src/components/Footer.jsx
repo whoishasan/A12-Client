@@ -38,7 +38,7 @@ const Footer = () => {
                 <input
                   type="email"
                   name="email"
-                  placeholder="ex - example@gmail.com"
+                  placeholder=""
                   className="placeholder:text-color-1 w-full py-1"
                 />
                 <button className="px-5 w-full sm:w-fit bg-red-500 text-white font-medium py-2 rounded-md">

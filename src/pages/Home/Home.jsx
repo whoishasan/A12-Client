@@ -5,7 +5,6 @@ import { Helmet } from "react-helmet-async";
 import Review from "@/components/pages/Home/Review";
 import ContactUs from "../../components/pages/Home/ContactUs";
 import Blog from "@/components/pages/Home/Blog";
-import { Hospital } from "lucide-react";
 import Hospitals from "@/components/hospitals";
 
 const Home = () => {

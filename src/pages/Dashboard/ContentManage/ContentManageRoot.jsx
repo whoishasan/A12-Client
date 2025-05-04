@@ -160,7 +160,7 @@ const ContentManageRoot = () => {
             <Input
               onChange={(e) => setsearchQuery(e.target.value)}
               className="border-b-0 w-full rounded-b-none md:w-[300px]"
-              placeholder="Search Blog"
+              placeholder=""
             />
             <CiSearch size={25} className="-ml-[30%] bg-white" />
           </div>

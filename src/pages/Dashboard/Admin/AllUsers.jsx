@@ -208,7 +208,7 @@ const AllUser = () => {
             <input
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search user"
+              placeholder=""
               className="px-5 py-2 border rounded-xl rounded-b-none border-b-0"
             />
             <button

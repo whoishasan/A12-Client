@@ -15,7 +15,7 @@ const AuthLayout = () => {
         </div>
       </header>
       <section className="flex justify-center w-full">
-        <div className="inline-flex w-full items-center px-5 py-24 xl:py-32 justify-center">
+        <div className="inline-flex w-full items-center px-5 py-24 xl:py-12 justify-center">
           <Outlet />
         </div>
       </section>

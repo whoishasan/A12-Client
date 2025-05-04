@@ -170,7 +170,7 @@ const Blogs = () => {
             >
               <input
                 ref={searchRef}
-                placeholder="Search post"
+                placeholder=""
                 className="w-full  bg-transparent p-3 placeholder:text-gray-900"
               />
               <button className="px-5 py-3 bg-gray-900 text-white font-medium">
@@ -216,7 +216,7 @@ const Blogs = () => {
                   <input
                     type="email"
                     name="email"
-                    placeholder="Email"
+                    placeholder=""
                     className="w-full  bg-transparent p-3 placeholder:text-white"
                   />
                   <button className="px-5 py-3 bg-white text-gray-900 font-medium">

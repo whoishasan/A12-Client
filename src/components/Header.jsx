@@ -8,6 +8,7 @@ import { Skeleton } from "./ui/skeleton";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { CiGrid41, CiLogout } from "react-icons/ci";
+import { MdLightMode } from "react-icons/md";
 import Logout from "@/hooks/Logout";
 
 const Header = () => {
@@ -70,6 +71,7 @@ const Header = () => {
                 }}
               />
             </div>
+            {/* Toggle Dark mde and light mode */}
             {isLoading ? (
               <Skeleton className={`w-[84px] h-10`} />
             ) : !authData ? (
